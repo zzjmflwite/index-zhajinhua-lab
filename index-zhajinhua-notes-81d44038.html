@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>炸金花游戏 – 站点介绍与可信说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            background: #f2f7fa;
+            color: #1d2b38;
+            line-height: 1.6;
+            padding: 24px 18px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 网格卡片的基底 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 30px 0 20px;
+        }
+
+        @media (min-width: 520px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 24px 22px 26px;
+            box-shadow: 0 6px 16px rgba(0, 40, 60, 0.06), 0 2px 6px rgba(0, 50, 70, 0.04);
+            transition: box-shadow 0.2s ease, transform 0.15s;
+            border: 1px solid #d9e8ef;
+            backdrop-filter: blur(1px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 70, 90, 0.08);
+            transform: translateY(-2px);
+            border-color: #b0d3e3;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+            color: #0f3a4a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card h3::before {
+            content: "◆";
+            color: #2b8c9e;
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .card p, .card li {
+            font-size: 0.95rem;
+            color: #274351;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 6px;
+        }
+
+        .card ul li {
+            padding: 4px 0 4px 20px;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: #3c9eb3;
+            font-weight: 700;
+            position: absolute;
+            left: 2px;
+        }
+
+        /* hero 风格：开场短句，温和有力 */
+        .hero {
+            margin-bottom: 8px;
+            padding: 18px 0 12px;
+        }
+
+        .hero .tagline {
+            font-size: 1.7rem;
+            font-weight: 350;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            color: #0b3f4e;
+            max-width: 90%;
+            border-left: 6px solid #2b8c9e;
+            padding-left: 22px;
+            margin: 10px 0 14px;
+            background: linear-gradient(90deg, #e7f2f7 0%, transparent 80%);
+        }
+
+        .hero .tagline strong {
+            font-weight: 600;
+            color: #0c5c6e;
+        }
+
+        .intro-text {
+            font-size: 1.04rem;
+            margin: 12px 0 20px;
+            padding-right: 4px;
+            color: #1b4050;
+        }
+
+        .intro-text a {
+            color: #1f7a8c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dashed #8bbccd;
+            transition: border 0.2s;
+        }
+
+        .intro-text a:hover {
+            border-bottom: 2px solid #1f7a8c;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin: 40px 0 8px;
+            color: #0d4659;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title span {
+            background: #dceef5;
+            padding: 2px 12px 2px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-left: 12px;
+            color: #1b6073;
+        }
+
+        .highlight-box {
+            background: #f0f8fb;
+            border-radius: 24px;
+            padding: 18px 22px;
+            margin: 28px 0 18px;
+            border-left: 6px solid #2b8c9e;
+            font-size: 0.97rem;
+            color: #194452;
+        }
+
+        .highlight-box p {
+            margin: 8px 0;
+        }
+
+        .faq-mini {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 22px 24px;
+            margin: 30px 0 20px;
+            box-shadow: 0 2px 10px rgba(18, 78, 100, 0.06);
+            border: 1px solid #d0e2ec;
+        }
+
+        .faq-mini details {
+            margin: 8px 0;
+            border-bottom: 1px solid #e1eef5;
+            padding: 8px 0;
+        }
+
+        .faq-mini details:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #154f62;
+            font-size: 0.98rem;
+            padding: 4px 0;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-mini summary::after {
+            content: "▾";
+            font-size: 0.9rem;
+            color: #3c9eb3;
+            transition: transform 0.2s;
+        }
+
+        .faq-mini details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-mini .answer {
+            padding: 6px 0 10px 4px;
+            font-size: 0.93rem;
+            color: #2e5a6b;
+        }
+
+        .closing-note {
+            margin: 40px 0 22px;
+            padding: 16px 0 10px;
+            text-align: center;
+            border-top: 1px solid #c6dae5;
+            font-size: 0.92rem;
+            color: #2c6072;
+            letter-spacing: 0.3px;
+        }
+
+        .closing-note a {
+            color: #1b7a8c;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #87b9cb;
+        }
+
+        .closing-note a:hover {
+            border-bottom: 2px solid #1f7a8c;
+        }
+
+        .footer-meta {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: #4b6f7d;
+            text-align: center;
+            border-top: 1px solid #d4e4ed;
+            padding: 24px 0 6px;
+            opacity: 0.8;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 460px) {
+            .hero .tagline {
+                font-size: 1.45rem;
+                padding-left: 16px;
+                max-width: 100%;
+            }
+            .card {
+                padding: 18px 16px 20px;
+            }
+            .faq-mini {
+                padding: 16px 14px;
+            }
+        }
+
+        /* 辅助间距 */
+        .spacer-8 {
+            height: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 开场短句：故事感 -->
+    <div class="hero">
+        <div class="tagline">
+            有些游戏，<br>值得好好聊一聊。
+        </div>
+        <div class="intro-text">
+            这里是关于 <a href="https://index-zhajinhua.com">炸金花游戏</a> 的一个安静角落——没有浮夸的标语，也没有急切催促。我们更愿意把这款纸牌游戏当作一位老友，聊聊它的规则、它的牌局节奏，以及为什么这么多人会在一局又一局里找到乐趣。
+        </div>
+    </div>
+
+    <!-- 承接段落：站点介绍与可信说明 -->
+    <p style="margin: 16px 0 8px; font-size: 1rem; color: #1f4b5b;">
+        <strong style="color: #11586c;">index-zhajinhua.com</strong> 是一个围绕炸金花玩法整理的内容页面。这里不涉及任何形式的真金投注或博彩诱导，仅仅从游戏文化、牌型规则、常见策略和线上体验等角度，为感兴趣的朋友提供一份平实、清晰的参考。所有信息都经过基础核对，并持续更新细节。
+    </p>
+
+    <!-- 特点列表：网格卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <h3>规则拆解·不绕弯</h3>
+            <p>从豹子到散牌，从比牌顺序到加注逻辑，用最直接的方式讲清楚炸金花的基础框架。没有模棱两可，只有步骤分明的说明。</p>
+        </div>
+        <div class="card">
+            <h3>牌局场景·真实感</h3>
+            <p>不只是干巴巴的规则——我们还整理了几种典型的牌桌情景（翻牌、偷鸡、控池），帮助你理解不同风格下的思考路径。</p>
+        </div>
+        <div class="card">
+            <h3>线上体验·轻参考</h3>
+            <p>如果你对线上版本的炸金花感兴趣，页面上也提供了关于界面、操作和常见功能的中立描述，不偏向任何特定平台。</p>
+        </div>
+        <div class="card">
+            <h3>可信来源·有依据</h3>
+            <p>所有内容均基于公开的纸牌游戏资料、玩家社区讨论及基础概率计算，避免主观臆断。我们标注了信息来源范围，方便进一步核实。</p>
+        </div>
+    </div>
+
+    <!-- 温和的细节补充：使用 highlight-box -->
+    <div class="highlight-box">
+        <p><strong>一点说明：</strong> 这个站点不会收集你的个人信息，也没有隐藏的跳转或推广链接。唯一的目的就是让想了解 <a href="https://index-zhajinhua.com" style="color:#1b7a8c; text-decoration:underline; text-underline-offset:3px;">炸金花游戏</a> 的朋友，能有一个安静、不被打扰的阅读空间。如果你发现任何信息有误，也欢迎通过页面上的反馈渠道指正。</p>
+    </div>
+
+    <!-- FAQ 摘要：用 details 实现温和互动 -->
+    <div class="faq-mini">
+        <h3 style="font-weight:500; font-size:1.1rem; margin-bottom:8px; color:#0f4355;">常见疑问 · 简短摘要</h3>
+        <details>
+            <summary>炸金花和德州扑克是一回事吗？</summary>
+            <div class="answer">不完全相同。炸金花使用52张牌（不含大小王），每人发三张，比牌型大小；德州扑克是每人两张底牌加五张公共牌。两者策略侧重点不同，但都有 bluff（偷鸡）的成分。</div>
+        </details>
+        <details>
+            <summary>这个网站教人“必胜技巧”吗？</summary>
+            <div class="answer">不。纸牌游戏存在概率和运气成分，没有任何策略能保证必胜。我们只提供通用的思考框架和牌型概率参考，帮助玩家更理性地参与。</div>
+        </details>
+        <details>
+            <summary>内容多久更新一次？</summary>
+            <div class="answer">页面内容会随纸牌规则演变和玩家反馈不定期修订，大约每季度做一次细节审视。重大变化会标注更新日期。</div>
+        </details>
+        <details>
+            <summary>我可以转载这个页面的内容吗？</summary>
+            <div class="answer">摘录或引用部分内容时请注明来源（index-zhajinhua.com）。不建议大篇幅转载，因为页面内容可能随时更新，保持链接指向原页面更准确。</div>
+        </details>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing-note">
+        <p>感谢你花时间读完这些文字。无论你是第一次听说炸金花，还是早已熟悉它的节奏，都希望这里的整理能为你提供一点实在的帮助。如果愿意，随时回来看看——页面会一直在这里，安安静静地。</p>
+        <p style="margin-top:12px;">—— 来自 <a href="https://index-zhajinhua.com">炸金花游戏</a> 的内容维护者</p>
+    </div>
+
+    <div class="footer-meta">
+        <span>index-zhajinhua.com · 介绍页</span>
+        <span style="margin:0 10px;">·</span>
+        <span>非商业用途 · 内容仅供参考</span>
+    </div>
+</div>
+</body>
+</html>
